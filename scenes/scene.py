@@ -1,14 +1,15 @@
 import pygame
-import component.component
+import components.component as component
+
 
 class Scene:
     def __init__(self):
         self.components: list[component.Component] = []
 
-    def update(self, events: list[pygame.Event], dt: int):
+    def update(self, screen: pygame.Surface, events: list[pygame.Event], dt: int, mouse_pos: pygame.Vector2):
         for component in self.components:
             component.current_scene = self
-            component.update(events, dt)
+            component.update(screen, events, dt, mouse_pos)
 
         return self
 
